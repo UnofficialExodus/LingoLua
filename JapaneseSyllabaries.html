@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Japanese Syllabaries</title>
+  <style>
+    :root {
+      --bg-color: #1e3c72;
+      --text-color: #f0f0f0;
+      --item-bg: rgba(255,255,255,0.05);
+      --item-border: #00ffc3;
+    }
+
+    body.light {
+      --bg-color: #ffffff;
+      --text-color: #111111;
+      --item-bg: rgba(0, 0, 0, 0.05);
+      --item-border: #1e3c72;
+    }
+
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 2.5rem;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.2);
+      text-shadow: 2px 2px #000;
+      position: relative;
+    }
+
+    .toggle-theme {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-color);
+      transition: color 0.3s ease;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 2rem;
+      color: var(--text-color);
+    }
+
+    .syllabary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+    }
+
+    .column {
+      background: var(--item-bg);
+      border-left: 4px solid var(--item-border);
+      border-radius: 6px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .column:hover {
+      transform: translateY(-5px);
+      background-color: rgba(255,255,255,0.15);
+    }
+
+    .column h3 {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      text-decoration: underline;
+    }
+
+    .column div {
+      margin: 0.3rem 0;
+      font-size: 1.4rem;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      margin: 3rem 0 1rem;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    📖 Japanese Syllabaries
+    <button class="toggle-theme" onclick="toggleTheme()">🌒</button>
+  </header>
+
+  <h2>Hiragana & Katakana</h2>
+  <div class="syllabary">
+    <!-- Vowel Column -->
+    <div class="column">
+      <h3>Vowels</h3>
+      <div>A: あ / ア</div>
+      <div>I: い / イ</div>
+      <div>U: う / ウ</div>
+      <div>E: え / エ</div>
+      <div>O: お / オ</div>
+    </div>
+
+    <!-- K Column -->
+    <div class="column">
+      <h3>K</h3>
+      <div>Ka: か / カ</div>
+      <div>Ki: き / キ</div>
+      <div>Ku: く / ク</div>
+      <div>Ke: け / ケ</div>
+      <div>Ko: こ / コ</div>
+    </div>
+
+    <!-- S Column -->
+    <div class="column">
+      <h3>S</h3>
+      <div>Sa: さ / サ</div>
+      <div>Shi: し / シ</div>
+      <div>Su: す / ス</div>
+      <div>Se: せ / セ</div>
+      <div>So: そ / ソ</div>
+    </div>
+
+    <!-- T Column -->
+    <div class="column">
+      <h3>T</h3>
+      <div>Ta: た / タ</div>
+      <div>Chi: ち / チ</div>
+      <div>Tsu: つ / ツ</div>
+      <div>Te: て / テ</div>
+      <div>To: と / ト</div>
+    </div>
+
+    <!-- N Column -->
+    <div class="column">
+      <h3>N</h3>
+      <div>Na: な / ナ</div>
+      <div>Ni: に / ニ</div>
+      <div>Nu: ぬ / ヌ</div>
+      <div>Ne: ね / ネ</div>
+      <div>No: の / ノ</div>
+    </div>
+
+    <!-- H Column -->
+    <div class="column">
+      <h3>H</h3>
+      <div>Ha: は / ハ</div>
+      <div>Hi: ひ / ヒ</div>
+      <div>Fu: ふ / フ</div>
+      <div>He: へ / ヘ</div>
+      <div>Ho: ほ / ホ</div>
+    </div>
+
+    <!-- M Column -->
+    <div class="column">
+      <h3>M</h3>
+      <div>Ma: ま / マ</div>
+      <div>Mi: み / ミ</div>
+      <div>Mu: む / ム</div>
+      <div>Me: め / メ</div>
+      <div>Mo: も / モ</div>
+    </div>
+
+    <!-- Y Column -->
+    <div class="column">
+      <h3>Y</h3>
+      <div>Ya: や / ヤ</div>
+      <div>Yu: ゆ / ユ</div>
+      <div>Yo: よ / ヨ</div>
+    </div>
+
+    <!-- R Column -->
+    <div class="column">
+      <h3>R</h3>
+      <div>Ra: ら / ラ</div>
+      <div>Ri: り / リ</div>
+      <div>Ru: る / ル</div>
+      <div>Re: れ / レ</div>
+      <div>Ro: ろ / ロ</div>
+    </div>
+
+    <!-- W Column -->
+    <div class="column">
+      <h3>W</h3>
+      <div>Wa: わ / ワ</div>
+      <div>Wo: を / ヲ</div>
+    </div>
+
+    <!-- N syllable -->
+    <div class="column">
+      <h3>N</h3>
+      <div>ん / ン</div>
+    </div>
+  </div>
+
+  <footer>
+    ✈️ Source: Wikipedia, Japanese language references
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      document.querySelector('.toggle-theme').textContent = isLight ? '☀️' : '🌒';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+
+    window.onload = () => {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        document.body.classList.add('light');
+        document.querySelector('.toggle-theme').textContent = '☀️';
+      }
+    };
+  </script>
+</body>
+</html>

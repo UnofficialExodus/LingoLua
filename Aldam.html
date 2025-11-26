@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adlam Dictionary</title>
+  <style>
+    :root {
+      --bg-color: #1e3c72;
+      --text-color: #f0f0f0;
+      --item-bg: rgba(255,255,255,0.05);
+      --item-border: #00ffc3;
+    }
+
+    body.light {
+      --bg-color: #ffffff;
+      --text-color: #111111;
+      --item-bg: rgba(0, 0, 0, 0.05);
+      --item-border: #1e3c72;
+    }
+
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 2.5rem;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.2);
+      text-shadow: 2px 2px #000;
+      position: relative;
+    }
+
+    .toggle-theme {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-color);
+      transition: color 0.3s ease;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 2rem;
+      color: var(--text-color);
+      text-decoration: underline;
+    }
+
+    ul {
+      max-width: 1100px;
+      margin: 1rem auto 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 0.8rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 0.8rem 1rem;
+      background: var(--item-bg);
+      border-left: 4px solid var(--item-border);
+      transition: background 0.3s ease, transform 0.3s ease;
+      border-radius: 4px;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    li:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: translateX(5px);
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      margin: 3rem 0 1rem;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    📖 Adlam Dictionary
+    <button class="toggle-theme" onclick="toggleTheme()">🌒</button>
+  </header>
+
+  <h2>Letters & Vowels</h2>
+  <ul id="letters">
+    <li>𞤀 – A</li>
+    <li>𞤁 – B</li>
+    <li>𞤂 – P</li>
+    <li>𞤃 – Ɓ</li>
+    <li>𞤄 – M</li>
+    <li>𞤅 – N</li>
+    <li>𞤆 – Ɗ</li>
+    <li>𞤇 – T</li>
+    <li>𞤈 – R</li>
+    <li>𞤉 – C</li>
+    <li>𞤊 – J</li>
+    <li>𞤋 – Y</li>
+    <li>𞤌 – K</li>
+    <li>𞤍 – Q</li>
+    <li>𞤎 – G</li>
+    <li>𞤏 – F</li>
+    <li>𞤐 – S</li>
+    <li>𞤑 – X</li>
+    <li>𞤒 – H</li>
+    <li>𞤓 – L</li>
+    <li>𞤔 – U</li>
+    <li>𞤕 – W</li>
+    <li>𞤖 – Ɲ</li>
+    <li>𞤗 – Ŋ</li>
+    <li>𞤘 – V</li>
+    <li>𞤙 – Z</li>
+
+    <!-- Vowels -->
+    <li>𞤢 – a</li>
+    <li>𞤣 – e</li>
+    <li>𞤤 – i</li>
+    <li>𞤥 – o</li>
+    <li>𞤦 – u</li>
+  </ul>
+
+  <h2>Numbers</h2>
+  <ul id="numbers">
+    <li>𞥐 – 0</li>
+    <li>𞥑 – 1</li>
+    <li>𞥒 – 2</li>
+    <li>𞥓 – 3</li>
+    <li>𞥔 – 4</li>
+    <li>𞥕 – 5</li>
+    <li>𞥖 – 6</li>
+    <li>𞥗 – 7</li>
+    <li>𞥘 – 8</li>
+    <li>𞥙 – 9</li>
+  </ul>
+
+  <footer>
+    ✈️ Keep learning, the world of Adlam awaits 🌐
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      document.querySelector('.toggle-theme').textContent = isLight ? '☀️' : '🌒';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+
+    window.onload = () => {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        document.body.classList.add('light');
+        document.querySelector('.toggle-theme').textContent = '☀️';
+      }
+    };
+  </script>
+</body>
+</html>

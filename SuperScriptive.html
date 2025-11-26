@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adlam Dictionary</title>
+  <style>
+    :root {
+      --bg-color: #1e3c72;
+      --text-color: #f0f0f0;
+      --item-bg: rgba(255,255,255,0.05);
+      --item-border: #00ffc3;
+      --counter-color: #888;
+    }
+
+    body.light {
+      --bg-color: #ffffff;
+      --text-color: #111111;
+      --item-bg: rgba(0, 0, 0, 0.05);
+      --item-border: #1e3c72;
+      --counter-color: #777;
+    }
+
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 2.5rem;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.2);
+      text-shadow: 2px 2px #000;
+      position: relative;
+    }
+
+    .toggle-theme {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-color);
+      transition: color 0.3s ease;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 2rem;
+      color: var(--text-color);
+      text-decoration: underline;
+    }
+
+    /* --- SINGLE COLUMN LIST + COUNTER --- */
+    ul {
+      max-width: 700px;
+      margin: 1rem auto 2rem;
+      list-style: none;
+      padding: 0;
+      counter-reset: item-counter; /* reset counter for each section */
+    }
+
+li {
+  margin: 4px 0;   /* ← just a little space */
+  padding: 0.8rem 1rem;
+  background: var(--item-bg);
+  border-left: 4px solid var(--item-border);
+  transition: background 0.3s ease, transform 0.3s ease;
+  border-radius: 4px;
+  font-size: 1.5rem;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  counter-increment: item-counter;
+}
+
+
+    /* Add small gray number */
+    li::after {
+      content: counter(item-counter);
+      font-size: 0.9rem;
+      color: var(--counter-color);
+      margin-left: 1rem;
+    }
+
+    li:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: translateX(5px);
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      margin: 3rem 0 1rem;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    List of All World Writing Systems
+    <button class="toggle-theme" onclick="toggleTheme()">🌒</button>
+  </header>
+
+  <h2>Writing Systems: (ISO ISO 15924)</h2>
+
+<div style="text-align:center; margin-top: 1.5rem;">
+  <input 
+    id="searchBox" 
+    type="text" 
+    placeholder="Search writing systems…" 
+    style="padding: 0.7rem 1rem; width: 70%; max-width: 400px; font-size: 1rem; border-radius: 6px; border: none;">
+</div>
+
+  <ul id="letters">
+<li>Adlam</li>
+<li>Afaka</li>
+<li>Caucasian Albanian</li>
+<li>Ahom, Tai Ahom</li>
+<li>Arabic</li>
+<li>Arabic (Nastaliq variant)</li>
+<li>Imperial Aramaic</li>
+<li>Armenian</li>
+<li>Avestan</li>
+<li>Balinese</li>
+<li>Bamum</li>
+<li>Bassa Vah</li>
+<li>Batak</li>
+<li>Bengali (Bangla)</li>
+<li>Beria Erfe</li>
+<li>Bhaiksuki</li>
+<li>Blissymbols</li>
+<li>Bopomofo</li>
+<li>Brahmi</li>
+<li>Braille</li>
+<li>Buginese</li>
+<li>Buhid</li>
+<li>Chakma</li>
+<li>Unified Canadian Aboriginal Syllabics</li>
+<li>Carian</li>
+<li>Cham</li>
+<li>Cherokee</li>
+<li>Chisoi</li>
+<li>Chorasmian</li>
+<li>Cirth</li>
+<li>Coptic</li>
+<li>Cypro-Minoan</li>
+<li>Cypriot syllabary</li>
+<li>Cyrillic</li>
+<li>Cyrillic (Old Church Slavonic variant)</li>
+<li>Devanagari (Nagari)</li>
+<li>Dives Akuru</li>
+<li>Dogra</li>
+<li>Deseret (Mormon)</li>
+<li>Duployan shorthand, Duployan stenography</li>
+<li>Egyptian demotic</li>
+<li>Egyptian hieratic</li>
+<li>Egyptian hieroglyphs</li>
+<li>Elbasan</li>
+<li>Elymaic</li>
+<li>Ethiopic (Geʻez)</li>
+<li>Garay</li>
+<li>Khutsuri (Asomtavruli and Nuskhuri)</li>
+<li>Georgian (Mkhedruli and Mtavruli)</li>
+<li>Glagolitic</li>
+<li>Gunjala Gondi</li>
+<li>Masaram Gondi</li>
+<li>Gothic</li>
+<li>Grantha</li>
+<li>Greek</li>
+<li>Gujarati</li>
+<li>Gurung Khema</li>
+<li>Gurmukhi</li>
+<li>Han with Bopomofo (alias for Han + Bopomofo)</li>
+<li>Hangul (Hangŭl, Hangeul)</li>
+<li>Han (Hanzi, Kanji, Hanja)</li>
+<li>Hanunoo (Hanunóo)</li>
+<li>Han (Simplified variant)</li>
+<li>Han (Traditional variant)</li>
+<li>Hatran</li>
+<li>Hebrew</li>
+<li>Hiragana</li>
+<li>Anatolian Hieroglyphs (Luwian Hieroglyphs, Hittite Hieroglyphs)</li>
+<li>Pahawh Hmong</li>
+<li>Nyiakeng Puachue Hmong</li>
+<li>Han (Traditional variant) with Latin (alias for Hant + Latn)</li>
+<li>Japanese syllabaries (alias for Hiragana + Katakana)</li>
+<li>Old Hungarian (Hungarian Runic)</li>
+<li>Indus (Harappan)</li>
+<li>Old Italic (Etruscan, Oscan, etc.)</li>
+<li>Jamo (alias for Jamo subset of Hangul)</li>
+<li>Javanese</li>
+<li>Japanese (alias for Han + Hiragana + Katakana)</li>
+<li>Jurchen</li>
+<li>Kayah Li</li>
+<li>Katakana</li>
+<li>Kawi</li>
+<li>Kharoshthi</li>
+<li>Khmer</li>
+<li>Khojki</li>
+<li>Khitan large script</li>
+<li>Khitan small script</li>
+<li>Kannada</li>
+<li>Korean (alias for Hangul + Han)</li>
+<li>Kpelle</li>
+<li>Kirat Rai</li>
+<li>Kaithi</li>
+<li>Tai Tham (Lanna)</li>
+<li>Lao</li>
+<li>Latin (Fraktur variant)</li>
+<li>Latin (Gaelic variant)</li>
+<li>Latin</li>
+<li>Leke</li>
+<li>Lepcha (Róng)</li>
+<li>Limbu</li>
+<li>Linear A</li>
+<li>Linear B</li>
+<li>Lisu (Fraser)</li>
+<li>Loma</li>
+<li>Lycian</li>
+<li>Lydian</li>
+<li>Mahajani</li>
+<li>Makasar</li>
+<li>Mandaic, Mandaean</li>
+<li>Manichaean</li>
+<li>Marchen</li>
+<li>Mayan hieroglyphs</li>
+<li>Medefaidrin (Oberi Okaime, Oberi Ɔkaimɛ)</li>
+<li>Mende Kikakui</li>
+<li>Meroitic Cursive</li>
+<li>Meroitic Hieroglyphs</li>
+<li>Malayalam</li>
+<li>Modi, Moḍī</li>
+<li>Mongolian</li>
+<li>Moon (Moon code, Moon script, Moon type)</li>
+<li>Mro, Mru</li>
+<li>Meitei Mayek (Meithei, Meetei)</li>
+<li>Multani</li>
+<li>Myanmar (Burmese)</li>
+<li>Nag Mundari</li>
+<li>Nandinagari</li>
+<li>Old North Arabian (Ancient North Arabian)</li>
+<li>Nabataean</li>
+<li>Newa, Newar, Newari, Nepāla lipi</li>
+<li>Naxi Dongba</li>
+<li>Naxi Geba</li>
+<li>N’Ko</li>
+<li>Nüshu</li>
+<li>Ogham</li>
+<li>Ol Chiki (Ol Cemet’, Ol, Santali)</li>
+<li>Ol Onal</li>
+<li>Old Turkic, Orkhon Runic</li>
+<li>Oriya (Odia)</li>
+<li>Osage</li>
+<li>Osmanya</li>
+<li>Old Uyghur</li>
+<li>Palmyrene</li>
+<li>Pau Cin Hau</li>
+<li>Proto-Cuneiform</li>
+<li>Proto-Elamite</li>
+<li>Old Permic</li>
+<li>Phags-pa</li>
+<li>Inscriptional Pahlavi</li>
+<li>Psalter Pahlavi</li>
+<li>Book Pahlavi</li>
+<li>Phoenician</li>
+<li>Miao (Pollard)</li>
+<li>Klingon (KLI pIqaD)</li>
+<li>Inscriptional Parthian</li>
+<li>Proto-Sinaitic</li>
+<li>Reserved for private use (start)</li>
+<li>Reserved for private use (end)</li>
+<li>Ranjana</li>
+<li>Rejang (Redjang, Kaganga)</li>
+<li>Hanifi Rohingya</li>
+<li>Rongorongo</li>
+<li>Runic</li>
+<li>Samaritan</li>
+<li>Sarati</li>
+<li>Old South Arabian</li>
+<li>Saurashtra</li>
+<li>(Small) Seal</li>
+<li>SignWriting</li>
+<li>Shavian (Shaw)</li>
+<li>Sharada, Śāradā</li>
+<li>Shuishu</li>
+<li>Siddham, Siddhaṃ, Siddhamātṛkā</li>
+<li>Sidetic</li>
+<li>Khudawadi, Sindhi</li>
+<li>Sinhala</li>
+<li>Sogdian</li>
+<li>Old Sogdian</li>
+<li>Sora Sompeng</li>
+<li>Soyombo</li>
+<li>Sundanese</li>
+<li>Sunuwar</li>
+<li>Syloti Nagri</li>
+<li>Syriac</li>
+<li>Syriac (Estrangelo variant)</li>
+<li>Syriac (Western variant)</li>
+<li>Syriac (Eastern variant)</li>
+<li>Tagbanwa</li>
+<li>Takri, Ṭākrī, Ṭāṅkrī</li>
+<li>Tai Le</li>
+<li>New Tai Lue</li>
+<li>Tamil</li>
+<li>Tangut</li>
+<li>Tai Viet</li>
+<li>Tai Yo</li>
+<li>Telugu</li>
+<li>Tengwar</li>
+<li>Tifinagh (Berber)</li>
+<li>Tagalog (Baybayin, Alibata)</li>
+<li>Thaana</li>
+<li>Thai</li>
+<li>Tibetan</li>
+<li>Tirhuta</li>
+<li>Tangsa</li>
+<li>Todhri</li>
+<li>Tolong Siki</li>
+<li>Toto</li>
+<li>Tulu-Tigalari</li>
+<li>Ugaritic</li>
+<li>Vai</li>
+<li>Visible Speech</li>
+<li>Vithkuqi</li>
+<li>Warang Citi (Varang Kshiti)</li>
+<li>Wancho</li>
+<li>Woleai</li>
+<li>Old Persian</li>
+<li>Cuneiform, Sumero-Akkadian</li>
+<li>Yezidi</li>
+<li>Yi</li>
+<li>Zanabazar Square</li>
+</ul>  
+
+<footer>
+  ✈️ Source: ISO 15924
+</footer>
+
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle('light');
+    const isLight = document.body.classList.contains('light');
+    document.querySelector('.toggle-theme').textContent = isLight ? '☀️' : '🌒';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  }
+
+  window.onload = () => {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') {
+      document.body.classList.add('light');
+      document.querySelector('.toggle-theme').textContent = '☀️';
+    }
+
+    document.getElementById('searchBox').addEventListener('input', function() {
+      const query = this.value.toLowerCase();
+      const items = document.querySelectorAll('#letters li');
+
+      items.forEach(li => {
+        const text = li.textContent.toLowerCase();
+        li.style.display = text.includes(query) ? '' : 'none';
+      });
+    });
+  };   <!-- ← CLOSING BRACE FIXED -->
+</script>

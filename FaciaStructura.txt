@@ -1,0 +1,7 @@
+My Face Structure 
+⚫Round: 39% 
+♦Diamond: 23% 
+♥Heart: 16% 
+🥚Oval: 15% 
+📒Oblong: 7% 
+⬛Square: 1%

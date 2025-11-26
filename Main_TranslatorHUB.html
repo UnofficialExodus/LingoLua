@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Translator</title>
+<style>
+    /* Global styles */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    /* Card container */
+    .translator-card {
+        background-color: #fff;
+        padding: 40px 50px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        text-align: center;
+        width: 350px;
+    }
+
+    .translator-card h1 {
+        margin-bottom: 20px;
+        font-size: 26px;
+        color: #333;
+    }
+
+    /* Input, output, and select boxes */
+    input, select {
+        width: 100%;
+        padding: 12px 15px;
+        margin: 10px 0;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    input:focus, select:focus {
+        border-color: #2575fc;
+        box-shadow: 0 0 8px rgba(37, 117, 252, 0.3);
+        outline: none;
+    }
+
+    input[readonly] {
+        background-color: #f5f5f5;
+        color: #333;
+    }
+
+    /* Button styling */
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        border: none;
+        border-radius: 10px;
+        background-color: #2575fc;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+        background-color: #1a5edb;
+        transform: translateY(-2px);
+    }
+
+    button:active {
+        transform: translateY(1px);
+    }
+
+    /* Responsive */
+    @media (max-width: 400px) {
+        .translator-card {
+            width: 90%;
+            padding: 30px 20px;
+        }
+        h1 {
+            font-size: 22px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="translator-card">
+    <h1>Word Translator</h1>
+
+    <input type="text" id="inputBox" placeholder="Enter a word in English">
+
+    <select id="languageSelect">
+        <option value="dakota">Dakota</option>
+        <option value="inuktitut">Inuktitut</option>
+    </select>
+
+    <button id="translateBtn">Translate</button>
+
+    <input type="text" id="outputBox" placeholder="Translation appears here" readonly>
+</div>
+
+<script>
+    const dakotaDictionary = {
+    'the': '(no direct equivalent)',
+    'be': 'waŋží',
+    'of': 'kiŋ',
+    'and': 'na',
+    'to': 'kiŋ',
+    'a': '(no direct equivalent)',
+    'in': 'mišičhiŋ',
+    'have': 'iyápi',
+    'it': 'taŋyáŋ',
+    'you': 'niye / niyápi',
+    'for': 'kiŋ',
+    'not': 'k’uŋ',
+    'that': 'tha',
+    'on': 'okíčhize',
+    'with': 'kiŋya',
+    'do': 'iyé',
+    'as': 'čhiŋ',
+    'he': 'woíŋ',
+    'we': 'tókča',
+    'this': 'eté',
+    'at': 'kiŋ',
+    'they': 'woíŋ',
+    'but': 't’áku',
+    'from': 'kiŋ',
+    'by': 'eča',
+    'will': 'yutáŋ',
+    'or': 'okšíyA',
+    'his': 'un',
+    'say': 'iyápi',
+    'go': 'ká',
+    'she': 'woíŋ',
+    'so': 'tópa',
+    'all': 'toká',
+    'about': 'čhaŋ',
+    'if': 'k’aŋ',
+    'one': 'waná',
+    'my': 'miye',
+    'know': 'oyáŋke',
+    'there': 'thíŋ',
+    'which': 'ŋa',
+    'can': 'yuhá',
+    'get': 'iŋya',
+    'her': 'un',
+    'would': 'yutáŋ',
+    'think': 'oyáŋke',
+    'like': 'tȟáwa',
+    'more': 'tókča',
+    'their': 'un',
+    'your': 'niye / niyápi',
+    'when': 'k’uŋ hé', 
+    'what': 'tókša',
+    'make': 'iyápi / wíyaskapi',
+    'time': 'íyokiphi',
+    'who': 'tówaŋ',
+    'see': 'waštéya / waŋžíya',
+    'up': 'čhaŋ / čhaŋyA',
+    'people': 'taŋyáŋyaŋ / oyáte',
+    'some': 'tókča / čhíŋ',
+    'out': 'čiŋ / okíčhiŋ',
+    'me': 'miye',
+    'good': 'wašté',
+    'other': 'thíya',
+    'year': 'waníyetu',
+    'well': 'wašté',
+    'our': 'tókča miye',
+    'very': 'tópa',
+    'just': 'tópa / čhíŋ',
+    'them': 'woíŋ',
+    'no': 'k’uŋ',
+    'take': 'iyápi / waŋží',
+    'because': 'iyá / čhaŋ',
+    'come': 'iyápi / wíyaka',
+    'could': 'yuhá / yutáŋ',
+    'use': 'iyápi / okíyA',
+    'work': 'iyápi / wašté',
+    'then': 'tópa / okíčhiŋ',
+    'now': 'lél',
+    'also': 'tópa / na',
+    'than': 'čhiŋ',
+    'him': 'un',
+    'into': 'okíčhiŋ',
+    'only': 'waŋží / tópa',
+    'want': 'waŋží / iyápi',
+    'look': 'waštéya',
+    'these': 'eté / taníya',
+    'its': 'un',
+    'new': 'čaŋté / wašté',
+    'give': 'iyápi',
+    'first': 'waŋží / tópa',
+    'way': 'wakȟáŋ / okíčhiŋ',
+    'thing': 'iyápi / taŋyáŋyaŋ',
+    'any': 'tókča / čhíŋ',
+    'over': 'okíčhiŋ / čhaŋ',
+    'right': 'wašté',
+    'after': 'heča / okíčhiŋ',
+    'find': 'iŋya / waštéya',
+    'day': 'áŋpétu',
+    'where': 'táku',
+    'most': 'tókča',
+    'should': 'yutáŋ',
+    'need': 'iyápi / waŋží',
+    'much': 'tópa',
+    'how': 'tókša / táku',
+    'back': 'okíčhiŋ / čhaŋ',
+    'mean': 'iyápi / wašté',
+    'may': 'yutáŋ',
+    'such': 'tópa',
+    'us': 'tókča miye',
+    'here': 'hé',
+    'really': 'wašté / tópa',
+    'even': 'tópa',
+    'company': 'oyáte / owáŋka',
+    'those': 'taníya / eté',
+    'many': 'tókča',
+    'child': 'wičháša',
+    'tell': 'iyápi / oyápi',
+    'last': 'waŋží / okíčhiŋ',
+    'call': 'iyápi / oyápi',
+    'down': 'okíčhiŋ / čhaŋ',
+    'yes': 'háu',
+    'before': 'heča',
+    'man': 'wičháša / čháŋka',
+    'through': 'okíčhiŋ / čhaŋ',
+    'show': 'iyápi / waštéya',
+    'life': 'owáŋka / iyápi',
+    'between': 'okíčhiŋ / čhaŋ',
+    'lot': 'tókča',
+    'feel': 'waštéya / iyápi',
+    'place': 'okíčhiŋ / owáŋka',
+    'change': 'iyápi / waštéya',
+    'long': 'tókča / wašté',
+    'too': 'tópa',
+    'pause': 'iyápi / tókša',
+    'still': 'lél / tópa',
+    'write': 'iyápi / oyápi',
+    'problem': 'iyápi / waštéya',
+    'talk': 'iyápi / oyápi',
+    'try': 'iyápi / waštéya',
+    'something': 'tókša / taŋyáŋyaŋ',
+    'unclear': 'k’uŋ wašté',
+    'same': 'tópa / wašté',
+    'great': 'wašté',
+    'number': 'waná / tókša',
+    'leave': 'iyápi / ká',
+    'little': 'waná / tókša',
+    'both': 'tókča',
+    'meet': 'iyápi / woíŋ',
+    'help': 'waštéya / iyápi',
+    'own': 'miye / un',
+    'ask': 'iyápi / oyápi',
+    'part': 'iyápi / okíčhiŋ',
+    'country': 'oyáte',
+    'put': 'iyápi / okíčhiŋ',
+    'point': 'iyápi / waštéya',
+    'start': 'iyápi / waštéya',
+    'school': 'wówaš’akA',
+    'each': 'tókča',
+    'become': 'waŋží / iyápi',
+    'interest': 'waštéya / iyápi',
+    'old': 'zápta',
+    'off': 'okíčhiŋ / čhaŋ',
+    'another': 'thíya',
+    'different': 'thíya / wašté',
+    'high': 'čháŋka / wašté',
+    'next': 'okíčhiŋ / waŋží',
+    'include': 'iyápi / waštéya',
+    'late': 'waŋží / lél',
+    'why': 'tókša / k’uŋ',
+    'live': 'waŋží / iyápi',
+    'end': 'waŋží / okíčhiŋ',
+    'world': 'oyáte / okíčhiŋ',
+    'week': 'waníyetu / okíčhiŋ',
+    'must': 'yutáŋ',
+    'while': 'lél / okíčhiŋ',
+    'never': 'k’uŋ waŋží',
+    'study': 'iyápi / waštéya',
+    'kind': 'wašté',
+    'report': 'iyápi / waštéya',
+    'play': 'iyápi / waštéya',
+    'house': 'thípi',
+    'group': 'oyáte / tókča',
+    'might': 'yutáŋ',
+    'home': 'thípi',
+    'course': 'okíčhiŋ / wašté',
+    'let': 'iyápi / waštéya',
+    'case': 'iyápi / okíčhiŋ',
+    'system': 'okíčhiŋ / wašté',
+    'again': 'tópa / wašté',
+    'hear': 'waštéya / iyápi',
+    'woman': 'wičháŋka',
+    'family': 'tókča oyáte',
+    'book': 'waštéya / iyápi',
+    'seem': 'wašté / iyápi',
+    'around': 'čhaŋ / okíčhiŋ',
+    'during': 'okíčhiŋ / wašté',
+    'keep': 'iyápi / waštéya',
+    'big': 'čháŋka / wašté',
+    'follow': 'iyápi / woíŋ',
+    'every': 'tókča',
+    'question': 'iyápi / tókša'
+        // Add more word mappings here
+    };
+
+    const inuktitutDictionary = {
+    'a': 'Indefinite articles non-existant', // indefinite article doesn't exist; using placeholder
+    'abandon': 'ᐱᖅᑯᓯᖅ [piqqusiq]',
+    'ability': 'ᐅᑎᖅᑯᓯᖅ [utiqqusiq]',
+    'able': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'about': 'ᐅᖃᓕᒫᖅ [uqalimaaq]',
+    'above': 'ᐃᑭᖓᓂᖅ [ikinganiq]',
+    'abroad': 'ᐊᐅᔭᖅ [aujauq]',
+    'absolute': 'ᐃᓕᓴᐅᓯᖅ [ilisausiq]',
+    'absolutely': 'ᐃᓕᓴᐅᓯᖅ [ilisausiq]',
+    'academic': 'ᐱᓕᕆᖅ [piliriq]',
+    'accept': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'acceptable': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'access': 'ᐊᑎᑕᖅ [atitaq]',
+    'accident': 'ᐱᖅᑯᓯᖅ [piqqusiq]',
+    'accommodation': 'ᐊᓯᕐᓂᖅ [asirniq]',
+    'accompany': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'according to': 'ᐃᑭᖓᓂᖅ [ikinganiq]',
+    'account': 'ᐊᑎᑕᖅ [atitaq]',
+    'accurate': 'ᐃᓕᓴᐅᓯᖅ [ilisausiq]',
+    'accuse': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'achieve': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'achievement': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'acknowledge': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'acquire': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'across': 'ᐊᑕᓪᓗ [atalu]',
+    'act': 'ᐱᓕᕆᖅ [piliriq]',
+    'action': 'ᐱᓕᕆᖅ [piliriq]',
+    'active': 'ᐊᑐᖅ [atuq]',
+    'activity': 'ᐱᓕᕆᖅ [piliriq]',
+    'actor': 'ᐱᓕᕆᐊᖅ [piliaq]',
+    'actress': 'ᐱᓕᕆᐊᖅ [piliaq]',
+    'actual': 'ᐊᖏᕐᔪᐊᖅ [angirjuaq]',
+    'actually': 'ᐊᖏᕐᔪᐊᖅ [angirjuaq]',
+    'ad': 'ᑕᐃᒪᓐᓂᖅ [taimanniq]',
+    'adapt': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'add': 'ᐱᖅᑕᖅ [piqtaq]',
+    'addition': 'ᐱᖅᑕᖅ [piqtaq]',
+    'additional': 'ᐱᖅᑕᖅ [piqtaq]',
+    'address': 'ᐊᓯᖏᓐᓂᖅ [asiinnginniq]',
+    'administration': 'ᐊᓯᖏᓐᓂᖅ [asiinnginniq]',
+    'admire': 'ᐊᐳᖅ [apuq]',
+    'admit': 'ᐊᐳᖅ [apuq]',
+    'adopt': 'ᐊᐳᖅ [apuq]',
+    'adult': 'ᐊᓐᓇᖅ [annaq]',
+    'advance': 'ᐊᐅᓯᖅ [ausiq]',
+    'advanced': 'ᐊᐅᓯᖅ [ausiq]',
+    'advantage': 'ᐊᑎᐅᖅ [atiuq]',
+    'adventure': 'ᐊᑎᐅᖅ [atiuq]',
+    'advertise': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'advertisement': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'advertising': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'advice': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'advise': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'affair': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'affect': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'afford': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'afraid': 'ᐱᐅᔪᖅ [piujuq]',
+    'after': 'ᐃᖏᖅ [iniq]',
+    'afternoon': 'ᐃᖏᖅ [iniq]',
+    'afterwards': 'ᐃᖏᖅ [iniq]',
+    'again': 'ᐊᒻᒪᓗ [ammalu]',
+    'against': 'ᐊᐅᓂᖅ [auniq]',
+    'age': 'ᐊᐅᓪᓗᖓ [aulluŋa]',
+    'aged': 'ᐊᐅᓪᓗᖓ [aulluŋa]',
+    'agency': 'ᐊᑎᐅᖅ [atiuq]',
+    'agenda': 'ᐊᑎᐅᖅ [atiuq]',
+    'agent': 'ᐊᑎᐅᖅ [atiuq]',
+    'aggressive': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'ago': 'ᐊᓗᐊᖅ [aluaq]',
+    'agree': 'ᐊᐅᓐᓇᖅ [aunnaq]',
+    'agreement': 'ᐊᐅᓐᓇᖅ [aunnaq]',
+    'ah': 'ᐊᐦ [ah]',
+    'ahead': 'ᐊᖏᕐᔪᐊᖅ [angirjuaq]',
+    'aid': 'ᐊᑎᐅᖅ [atiuq]',
+    'aim': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'air': 'ᐃᐸᖅ [ipaq]',
+    'aircraft': 'ᐃᐸᖅᑎᖅ [ipaqtiq]',
+    'airline': 'ᐃᐸᖅᑎᖅ [ipaqtiq]',
+    'airport': 'ᐃᐸᖅᑎᖅ [ipaqtiq]',
+    'alarm': 'ᐃᐸᖅ [ipaq]',
+    'album': 'ᐊᓗᒪ [aluma]',
+    'alcohol': 'ᐊᓪᓚᒃᐳᓐ [allakpunn]',
+    'alcoholic': 'ᐊᓪᓚᒃᐳᓐ [allakpunn]',
+    'alive': 'ᐃᓕᖅ [iliq]',
+    'all': 'ᐊᓪᓚ [alla]',
+    'all right': 'ᐊᓪᓚ [alla]',
+    'allow': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'almost': 'ᐃᓗᖅ [iluq]',
+    'alone': 'ᐊᓐᓇᖅ [annaq]',
+    'along': 'ᐊᓕᖅ [aliq]',
+    'already': 'ᐊᖏᖅ [aniq]',
+    'also': 'ᐊᖏᖅ [aniq]',
+    'alter': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'alternative': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'although': 'ᐊᓕᐊᖅ [aliaq]',
+    'always': 'ᐊᓕᐊᖅ [aliaq]',
+    'amazed': 'ᐊᐳᖅ [apuq]',
+    'amazing': 'ᐊᐳᖅ [apuq]',
+    'ambition': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'ambitious': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'among': 'ᐊᓪᓚ [alla]',
+    'amount': 'ᐱᖅᑕᖅ [piqtaq]',
+    'analyse': 'ᐱᓕᕆᖅ [piliriq]',
+    'analysis': 'ᐱᓕᕆᖅ [piliriq]',
+    'ancient': 'ᐊᓂᒃᑯᓯᖅ [anikkusiq]',
+    'and': 'ᐊᒻᒪᓗ [ammalu]',
+    'anger': 'ᐱᐅᔪᖅ [piujuq]',
+    'angle': 'ᐃᑭᖓᓂᖅ [ikinganiq]',
+    'angry': 'ᐱᐅᔪᖅ [piujuq]',
+    'animal': 'ᐅᓂᒃ [unik]',
+    'ankle': 'ᐊᒪᓐᓂᖅ [amanniq]',
+    'anniversary': 'ᐃᓕᓴᐅᓯᖅ [ilisausiq]',
+    'announce': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'announcement': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'annoy': 'ᐊᐳᖅ [apuq]',
+    'annoyed': 'ᐊᐳᖅ [apuq]',
+    'annoying': 'ᐊᐳᖅ [apuq]',
+    'annual': 'ᐊᖏᕐᔪᐊᖅ [angirjuaq]',
+    'another': 'ᐊᓪᓚ [alla]',
+    'answer': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'anxious': 'ᐱᐅᔪᖅ [piujuq]',
+    'any': 'ᐊᓪᓚ [alla]',
+    'anybody': 'ᐊᓪᓚ [alla]',
+    'any more': 'ᐊᒻᒪᓗ [ammalu]',
+    'anyone': 'ᐊᓪᓚ [alla]',
+    'anything': 'ᐊᓪᓚ [alla]',
+    'anyway': 'ᐊᒻᒪᓗ [ammalu]',
+    'anywhere': 'ᐊᓪᓚ [alla]',
+    'apart': 'ᐊᒻᒪᓗ [ammalu]',
+    'apartment': 'ᐊᓯᕐᓂᖅ [asirniq]',
+    'apologize': 'ᐊᐳᖅ [apuq]',
+    'app': 'ᐊᑎᐅᖅ [atiuq]',
+    'apparent': 'ᐃᓕᓴᐅᓯᖅ [ilisausiq]',
+    'apparently': 'ᐃᓕᓴᐅᓯᖅ [ilisausiq]',
+    'appeal': 'ᐊᐳᖅ [apuq]',
+    'appear': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'appearance': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'apple': 'ᐊᐸᓪ [apal]',
+    'application': 'ᐊᑎᐅᖅ [atiuq]',
+    'apply': 'ᐊᑎᐅᖅ [atiuq]',
+    'appointment': 'ᐊᑎᐅᖅ [atiuq]',
+    'appreciate': 'ᐊᐳᖅ [apuq]',
+    'approach': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'appropriate': 'ᐃᓕᓴᐅᓯᖅ [ilisausiq]',
+    'approval': 'ᐃᓕᓴᐅᓯᖅ [ilisausiq]',
+    'approve': 'ᐃᓕᓴᐅᓯᖅ [ilisausiq]',
+    'approximately': 'ᐃᓗᖅ [iluq]',
+    'April': 'ᐊᐸᕐᓕ [aparlī]',
+    'architect': 'ᐱᓕᕆᖅ [piliriq]',
+    'architecture': 'ᐱᓕᕆᖅ [piliriq]',
+    'area': 'ᐊᑎᐅᖅ [atiuq]',
+    'argue': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'argument': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'arise': 'ᐊᐅᓯᖅ [ausiq]',
+    'arm': 'ᐊᓪᓚ [alla]',
+    'armed': 'ᐊᑎᐅᖅ [atiuq]',
+    'arms': 'ᐊᓪᓚ [alla]',
+    'army': 'ᐊᑎᐅᖅ [atiuq]',
+    'around': 'ᐊᓕᖅ [aliq]',
+    'arrange': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'arrangement': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'arrest': 'ᐊᑎᐅᖅ [atiuq]',
+    'arrival': 'ᐊᐅᓯᖅ [ausiq]',
+    'arrive': 'ᐊᐅᓯᖅ [ausiq]',
+    'art': 'ᐱᓕᕆᖅ [piliriq]',
+    'article': 'ᐊᓗᒪ [aluma]',
+    'artificial': 'ᐃᓕᓴᐅᓯᖅ [ilisausiq]',
+    'artist': 'ᐱᓕᕆᐊᖅ [piliaq]',
+    'artistic': 'ᐱᓕᕆᖅ [piliriq]',
+    'as': 'ᐊᖏᖅ [aniq]',
+    'ashamed': 'ᐱᐅᔪᖅ [piujuq]',
+    'ask': 'ᐊᑎᐅᖅ [atiuq]',
+    'asleep': 'ᐃᓕᖅ [iliq]',
+    'aspect': 'ᐃᑭᖓᓂᖅ [ikinganiq]',
+    'assess': 'ᐱᓕᕆᖅ [piliriq]',
+    'assessment': 'ᐱᓕᕆᖅ [piliriq]',
+    'assignment': 'ᐊᑎᐅᖅ [atiuq]',
+    'assist': 'ᐊᑎᐅᖅ [atiuq]',
+    'assistant': 'ᐊᑎᐅᖅ [atiuq]',
+    'associate': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'associated': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'association': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'assume': 'ᐃᓕᓴᐅᓯᖅ [ilisausiq]',
+    'at': 'ᐊᓪᓚ [alla]',
+    'athlete': 'ᐊᑎᐅᖅ [atiuq]',
+    'atmosphere': 'ᐃᐸᖅ [ipaq]',
+    'attach': 'ᐊᑕᐅᓯᖅ [atausiq]',
+    'attack': 'ᐊᑎᐅᖅ [atiuq]',
+'attempt': 'ᐱᖅᑯᓯᖅ [piqqusiq]',
+'attend': 'ᐊᑕᐅᓯᖅ [atausiq]',
+'attention': 'ᐊᐃᑦᑕᖅ [aittaq]',
+'attitude': 'ᐃᓕᓐᓂᖅ [ilinniq]',
+'attract': 'ᐊᒻᒪᓗᑦ [ammalut]',
+'attraction': 'ᐊᒻᒪᓗᖅ [ammaluq]',
+'attractive': 'ᐊᒻᒪᓗᑦ ᐱᖃᑦᑕᖅ [ammalut piqattaq]',
+'audience': 'ᐊᓈᓇᐃᑦ [aanait]',
+'August': 'ᐊᐅᑯᐱᒃ [aukopik]',
+'aunt': 'ᐊᓘᖅ [aluuq]',
+'author': 'ᐊᓪᓚᒥᖅ [allamiq]',
+'authority': 'ᐃᑲᓇᐃᑦ ᐊᒻᒪᓗᑦ [ikanait ammalut]',
+'autumn': 'ᐊᐅᓚᓂᖅ [aulaniq]',
+'available': 'ᐊᓈᓇᖅ [aanaaq]',
+'average': 'ᐊᑎᓕᖅ [atiliq]',
+'avoid': 'ᐱᖃᖅᑕᖅ [piqaqtaq]',
+'award': 'ᐃᓯᓚᖅ [isilaq]',
+'aware': 'ᐃᓯᐅᖅ [isiuq]',
+'away': 'ᐊᐅᓐᓇᖅ [aunnarq]',
+'awful': 'ᐊᐅᔭᖅᑕᐅᓯᖅ [aujattausiq]',
+'baby': 'ᐊᐃᓐᓇᖅ [ainnnaq]',
+'back': 'ᐊᖏᓐᓂᖅ [anginniq]',
+'background': 'ᐊᖏᓐᓂᖅ ᐊᓈᓇᖅ [anginniq aanaaq]',
+'backwards': 'ᐊᖏᓐᓂᖅ ᐊᖏᓐᓂᖅ [anginniq anginniq]',
+'bacteria': 'ᐃᓕᓐᓂᒃ ᐊᐃᑦ [ilinnik ait]', // descriptive
+'bad': 'ᐊᒃᑐᖅ [aktuq]',
+'badly': 'ᐊᒃᑐᖅ ᐊᐃᑦ [aktuq ait]',
+'bag': 'ᐊᓯᖅ [asiq]',
+'bake': 'ᑕᐱᖅᑕᐅᓂᖅ [tapiqtauniq]'
+
+
+        // Add more Cree words here
+    };
+
+    function translate() {
+        const input = document.getElementById('inputBox').value.toLowerCase().trim();
+        const language = document.getElementById('languageSelect').value;
+        let output = '';
+
+        if (language === 'dakota') {
+            output = dakotaDictionary[input] || '(no translation found)';
+        } else if (language === 'inuktitut') {
+            output = inuktitutDictionary[input] || '(no translation found)';
+        }
+
+        document.getElementById('outputBox').value = output;
+    }
+
+    document.getElementById('translateBtn').addEventListener('click', translate);
+</script>
+
+</body>
+</html>

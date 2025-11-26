@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Language Map</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <style>
+    #map { height: 100vh; }
+
+    #home-arrow {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 30px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: background 0.3s;
+      z-index: 1000; /* make sure it stays on top of map */
+    }
+
+    #home-arrow:hover {
+      background: rgba(200, 200, 200, 0.9);
+    }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+<script>
+  const map = L.map('map').setView([20, 0], 2); // World view
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+
+// 1. Adlam — Guinea (West Africa)
+L.circleMarker([11.3, -11.0], {
+  color: "#FF6347",
+  radius: 8
+}).addTo(map).bindPopup("<b>Adlam</b><br>Origin: Guinea (West Africa)");
+
+// 2. Afaka — Suriname
+L.circleMarker([4.9, -55.1], {
+  color: "#4682B4",
+  radius: 8
+}).addTo(map).bindPopup("<b>Afaka</b><br>Origin: Suriname");
+
+// 3. Caucasian Albanian — Azerbaijan / Dagestan
+L.circleMarker([41.0, 47.5], {
+  color: "#32CD32",
+  radius: 8
+}).addTo(map).bindPopup("<b>Caucasian Albanian</b><br>Origin: Caucasus (Azerbaijan/Dagestan)");
+
+// 4. Ahom / Tai Ahom — Assam, India
+L.circleMarker([26.7, 94.0], {
+  color: "#FFD700",
+  radius: 8
+}).addTo(map).bindPopup("<b>Ahom (Tai Ahom)</b><br>Origin: Assam, India");
+
+// 5. Arabic — Arabian Peninsula
+L.circleMarker([24.0, 45.0], {
+  color: "#8A2BE2",
+  radius: 8
+}).addTo(map).bindPopup("<b>Arabic</b><br>Origin: Arabian Peninsula");
+
+// 6. Arabic (Nastaliq) — Persia / Iran
+L.circleMarker([32.0, 53.0], {
+  color: "#DC143C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Arabic (Nastaliq)</b><br>Origin: Persia (Iran)");
+
+// 7. Imperial Aramaic — Near East (Syria / Mesopotamia)
+L.circleMarker([34.5, 38.3], {
+  color: "#FF8C00",
+  radius: 8
+}).addTo(map).bindPopup("<b>Imperial Aramaic</b><br>Origin: Ancient Near East");
+
+// 8. Armenian — Armenia
+L.circleMarker([40.2, 44.5], {
+  color: "#20B2AA",
+  radius: 8
+}).addTo(map).bindPopup("<b>Armenian</b><br>Origin: Armenia");
+
+// 9. Avestan — Ancient Persia (Iran)
+L.circleMarker([32.5, 54.0], {
+  color: "#4169E1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Avestan</b><br>Origin: Ancient Persia (Iran)");
+
+// 10. Balinese — Bali, Indonesia
+L.circleMarker([-8.4, 115.1], {
+  color: "#FF1493",
+  radius: 8
+}).addTo(map).bindPopup("<b>Balinese</b><br>Origin: Bali, Indonesia");
+
+// 11. Bamum — Cameroon
+L.circleMarker([5.5, 10.5], {
+  color: "#00CED1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Bamum</b><br>Origin: Cameroon");
+
+// 12. Bassa Vah — Liberia
+L.circleMarker([6.5, -9.5], {
+  color: "#7B68EE",
+  radius: 8
+}).addTo(map).bindPopup("<b>Bassa Vah</b><br>Origin: Liberia");
+
+// 13. Batak — Northern Sumatra, Indonesia
+L.circleMarker([2.8, 98.9], {
+  color: "#3CB371",
+  radius: 8
+}).addTo(map).bindPopup("<b>Batak</b><br>Origin: Northern Sumatra, Indonesia");
+
+// 14. Bengali — Bengal region (India/Bangladesh)
+L.circleMarker([23.7, 90.4], {
+  color: "#CD5C5C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Bengali</b><br>Origin: Bengal (India/Bangladesh)");
+
+// 15. Beria Erfe — Sudan / Chad (Zaghawa people)
+L.circleMarker([15.0, 26.0], {
+  color: "#2E8B57",
+  radius: 8
+}).addTo(map).bindPopup("<b>Beria Erfe</b><br>Origin: Sudan/Chad (Zaghawa)");
+
+// 16. Bhaiksuki — Bihar / Eastern India
+L.circleMarker([25.5, 85.0], {
+  color: "#A0522D",
+  radius: 8
+}).addTo(map).bindPopup("<b>Bhaiksuki</b><br>Origin: Bihar/Eastern India");
+
+// 17. Blissymbols — International (created in Canada)
+L.circleMarker([43.7, -79.4], {
+  color: "#6A5ACD",
+  radius: 8
+}).addTo(map).bindPopup("<b>Blissymbols</b><br>Origin: Canada (constructed script)");
+
+// 18. Bopomofo — China (Republic of China, early 20th century)
+L.circleMarker([31.2, 121.5], {
+  color: "#B22222",
+  radius: 8
+}).addTo(map).bindPopup("<b>Bopomofo</b><br>Origin: China");
+
+// 19. Brahmi — India (Northwest / Gangetic basin)
+L.circleMarker([25.0, 80.0], {
+  color: "#8B4513",
+  radius: 8
+}).addTo(map).bindPopup("<b>Brahmi</b><br>Origin: Indian Subcontinent");
+
+// UPDATED — 20. Braille — Coupvray, France
+L.circleMarker([48.93, 2.82], {
+  color: "#008080",
+  radius: 8
+}).addTo(map).bindPopup("<b>Braille</b><br>Origin: Coupvray, France");
+
+// 21. Buginese — Sulawesi, Indonesia
+L.circleMarker([-3.6, 119.4], {
+  color: "#FF6347",
+  radius: 8
+}).addTo(map).bindPopup("<b>Buginese</b><br>Origin: Sulawesi, Indonesia");
+
+// 22. Buhid — Mindoro, Philippines
+L.circleMarker([12.8, 121.1], {
+  color: "#4682B4",
+  radius: 8
+}).addTo(map).bindPopup("<b>Buhid</b><br>Origin: Mindoro, Philippines");
+
+// 23. Chakma — Bangladesh / Northeast India
+L.circleMarker([23.0, 92.2], {
+  color: "#32CD32",
+  radius: 8
+}).addTo(map).bindPopup("<b>Chakma</b><br>Origin: Bangladesh / Northeast India");
+
+// 24. Unified Canadian Aboriginal Syllabics — Canada
+L.circleMarker([54.0, -95.0], {
+  color: "#FFD700",
+  radius: 8
+}).addTo(map).bindPopup("<b>Unified Canadian Aboriginal Syllabics</b><br>Origin: Canada");
+
+// 25. Carian — Western Anatolia (Turkey)
+L.circleMarker([37.0, 28.0], {
+  color: "#8A2BE2",
+  radius: 8
+}).addTo(map).bindPopup("<b>Carian</b><br>Origin: Western Anatolia (Turkey)");
+
+// 26. Cham — Vietnam / Cambodia
+L.circleMarker([11.5, 108.5], {
+  color: "#DC143C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Cham</b><br>Origin: Vietnam / Cambodia");
+
+// 27. Cherokee — United States (Oklahoma / SE US)
+L.circleMarker([35.5, -94.8], {
+  color: "#FF8C00",
+  radius: 8
+}).addTo(map).bindPopup("<b>Cherokee</b><br>Origin: Southeastern United States");
+
+// 28. Chisoi — Uganda
+L.circleMarker([1.4, 32.3], {
+  color: "#20B2AA",
+  radius: 8
+}).addTo(map).bindPopup("<b>Chisoi</b><br>Origin: Uganda");
+
+// 29. Chorasmian — Central Asia (Uzbekistan/Turkmenistan)
+L.circleMarker([41.5, 60.6], {
+  color: "#4169E1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Chorasmian</b><br>Origin: Central Asia");
+
+// 30. Cirth — Fictional (created by Tolkien)
+L.circleMarker([51.5, -0.1], {
+  color: "#FF1493",
+  radius: 8
+}).addTo(map).bindPopup("<b>Cirth</b><br>Origin: Fictional (Tolkien, UK)");
+
+// 31. Coptic — Egypt
+L.circleMarker([26.5, 30.0], {
+  color: "#00CED1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Coptic</b><br>Origin: Egypt");
+
+// 32. Cypro-Minoan — Cyprus
+L.circleMarker([35.1, 33.4], {
+  color: "#7B68EE",
+  radius: 8
+}).addTo(map).bindPopup("<b>Cypro-Minoan</b><br>Origin: Cyprus");
+
+// 33. Cypriot syllabary — Cyprus
+L.circleMarker([34.9, 33.1], {
+  color: "#3CB371",
+  radius: 8
+}).addTo(map).bindPopup("<b>Cypriot Syllabary</b><br>Origin: Cyprus");
+
+// 34. Cyrillic — Bulgaria
+L.circleMarker([42.7, 25.5], {
+  color: "#CD5C5C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Cyrillic</b><br>Origin: Bulgaria");
+
+// 35. Cyrillic (Old Church Slavonic) — First Bulgarian Empire
+L.circleMarker([42.9, 25.2], {
+  color: "#2E8B57",
+  radius: 8
+}).addTo(map).bindPopup("<b>Cyrillic (Old Church Slavonic)</b><br>Origin: First Bulgarian Empire");
+
+// 36. Devanagari — Northern India / Nepal
+L.circleMarker([27.0, 81.0], {
+  color: "#A0522D",
+  radius: 8
+}).addTo(map).bindPopup("<b>Devanagari</b><br>Origin: Northern India / Nepal");
+
+// 37. Dives Akuru — Maldives
+L.circleMarker([3.2, 73.2], {
+  color: "#6A5ACD",
+  radius: 8
+}).addTo(map).bindPopup("<b>Dives Akuru</b><br>Origin: Maldives");
+
+// 38. Dogra — Jammu & Kashmir (India)
+L.circleMarker([33.7, 75.0], {
+  color: "#B22222",
+  radius: 8
+}).addTo(map).bindPopup("<b>Dogra</b><br>Origin: Jammu & Kashmir, India");
+
+// 39. Deseret — United States (Utah)
+L.circleMarker([40.7, -111.9], {
+  color: "#8B4513",
+  radius: 8
+}).addTo(map).bindPopup("<b>Deseret</b><br>Origin: Utah, USA");
+
+// UPDATED — 40. Duployan — Canada (Montreal region)
+L.circleMarker([45.5, -73.6], {
+  color: "#008080",
+  radius: 8
+}).addTo(map).bindPopup("<b>Duployan</b><br>Origin: Canada (Montreal region)");
+
+// 41. Egyptian demotic — Egypt
+L.circleMarker([26.0, 31.0], {
+  color: "#FF6347",
+  radius: 8
+}).addTo(map).bindPopup("<b>Egyptian Demotic</b><br>Origin: Egypt");
+
+// 42. Egyptian hieratic — Egypt
+L.circleMarker([26.2, 31.4], {
+  color: "#4682B4",
+  radius: 8
+}).addTo(map).bindPopup("<b>Egyptian Hieratic</b><br>Origin: Egypt");
+
+// 43. Egyptian hieroglyphs — Egypt
+L.circleMarker([26.5, 30.6], {
+  color: "#32CD32",
+  radius: 8
+}).addTo(map).bindPopup("<b>Egyptian Hieroglyphs</b><br>Origin: Egypt");
+
+// 44. Elbasan — Albania
+L.circleMarker([41.1, 20.1], {
+  color: "#FFD700",
+  radius: 8
+}).addTo(map).bindPopup("<b>Elbasan</b><br>Origin: Albania");
+
+// 45. Elymaic — Southwestern Iran
+L.circleMarker([32.0, 48.8], {
+  color: "#8A2BE2",
+  radius: 8
+}).addTo(map).bindPopup("<b>Elymaic</b><br>Origin: Southwestern Iran");
+
+// 46. Ethiopic (Geʻez) — Ethiopia / Eritrea
+L.circleMarker([9.0, 38.8], {
+  color: "#DC143C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Ethiopic (Geʻez)</b><br>Origin: Ethiopia / Eritrea");
+
+// 47. Garay — Senegal
+L.circleMarker([14.7, -17.4], {
+  color: "#FF8C00",
+  radius: 8
+}).addTo(map).bindPopup("<b>Garay</b><br>Origin: Senegal");
+
+// 48. Khutsuri (Asomtavruli + Nuskhuri) — Georgia
+L.circleMarker([41.9, 44.7], {
+  color: "#20B2AA",
+  radius: 8
+}).addTo(map).bindPopup("<b>Khutsuri</b><br>Origin: Georgia");
+
+// 49. Georgian (Mkhedruli & Mtavruli) — Georgia
+L.circleMarker([41.8, 44.8], {
+  color: "#4169E1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Georgian</b><br>Origin: Georgia");
+
+// 50. Glagolitic — Croatia / Bulgaria
+L.circleMarker([43.5, 16.5], {
+  color: "#FF1493",
+  radius: 8
+}).addTo(map).bindPopup("<b>Glagolitic</b><br>Origin: Croatia/Bulgaria");
+
+// 51. Gunjala Gondi — Central India (Adilabad)
+L.circleMarker([19.0, 78.5], {
+  color: "#00CED1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Gunjala Gondi</b><br>Origin: Central India");
+
+// 52. Masaram Gondi — Central India
+L.circleMarker([20.0, 79.0], {
+  color: "#7B68EE",
+  radius: 8
+}).addTo(map).bindPopup("<b>Masaram Gondi</b><br>Origin: Central India");
+
+// 53. Gothic — Eastern Europe / Black Sea region
+L.circleMarker([47.0, 30.0], {
+  color: "#3CB371",
+  radius: 8
+}).addTo(map).bindPopup("<b>Gothic</b><br>Origin: Eastern Europe");
+
+// 54. Grantha — Tamil Nadu, India
+L.circleMarker([10.9, 78.7], {
+  color: "#CD5C5C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Grantha</b><br>Origin: Tamil Nadu, India");
+
+// 55. Greek — Greece
+L.circleMarker([38.0, 23.7], {
+  color: "#2E8B57",
+  radius: 8
+}).addTo(map).bindPopup("<b>Greek</b><br>Origin: Greece");
+
+// 56. Gujarati — Gujarat, India
+L.circleMarker([22.7, 72.6], {
+  color: "#A0522D",
+  radius: 8
+}).addTo(map).bindPopup("<b>Gujarati</b><br>Origin: Gujarat, India");
+
+// 57. Gurung Khema — Nepal
+L.circleMarker([28.2, 84.4], {
+  color: "#6A5ACD",
+  radius: 8
+}).addTo(map).bindPopup("<b>Gurung Khema</b><br>Origin: Nepal");
+
+// 58. Gurmukhi — Punjab (India)
+L.circleMarker([31.5, 75.0], {
+  color: "#B22222",
+  radius: 8
+}).addTo(map).bindPopup("<b>Gurmukhi</b><br>Origin: Punjab, India");
+
+// 59. Han with Bopomofo — China / Taiwan
+L.circleMarker([23.6, 120.9], {
+  color: "#8B4513",
+  radius: 8
+}).addTo(map).bindPopup("<b>Han with Bopomofo</b><br>Origin: China/Taiwan");
+
+// 60. Hangul — Korea
+L.circleMarker([37.6, 127.0], {
+  color: "#008080",
+  radius: 8
+}).addTo(map).bindPopup("<b>Hangul</b><br>Origin: Korea");
+
+// 61. Han (Hanzi / Kanji / Hanja) — China
+L.circleMarker([34.3, 108.9], {
+  color: "#FF4500",
+  radius: 8
+}).addTo(map).bindPopup("<b>Han (Hanzi / Kanji / Hanja)</b><br>Origin: China");
+
+// 62. Hanunoo — Mindoro, Philippines
+L.circleMarker([12.6, 121.0], {
+  color: "#1E90FF",
+  radius: 8
+}).addTo(map).bindPopup("<b>Hanunoo</b><br>Origin: Mindoro, Philippines");
+
+// 63. Han (Simplified) — China
+L.circleMarker([31.0, 121.3], {
+  color: "#32CD99",
+  radius: 8
+}).addTo(map).bindPopup("<b>Han (Simplified)</b><br>Origin: China");
+
+// 64. Han (Traditional) — Taiwan / Hong Kong
+L.circleMarker([22.3, 114.2], {
+  color: "#DA70D6",
+  radius: 8
+}).addTo(map).bindPopup("<b>Han (Traditional)</b><br>Origin: Taiwan / Hong Kong");
+
+// 65. Hatran — Northern Iraq
+L.circleMarker([35.0, 41.6], {
+  color: "#B0C4DE",
+  radius: 8
+}).addTo(map).bindPopup("<b>Hatran</b><br>Origin: Northern Iraq");
+
+// 66. Hebrew — Israel / Levant
+L.circleMarker([31.8, 35.2], {
+  color: "#9ACD32",
+  radius: 8
+}).addTo(map).bindPopup("<b>Hebrew</b><br>Origin: Israel / Levant");
+
+// 1. Hiragana — Japan
+L.circleMarker([35.4, 139.3], {
+  color: "#FF6347",
+  radius: 8
+}).addTo(map).bindPopup("<b>Hiragana</b><br>Origin: Japan");
+
+// 2. Anatolian Hieroglyphs (Luwian) — Anatolia (Turkey)
+L.circleMarker([37.0, 34.5], {
+  color: "#4682B4",
+  radius: 8
+}).addTo(map).bindPopup("<b>Anatolian Hieroglyphs</b><br>Origin: Anatolia (Turkey)");
+
+// 3. Pahawh Hmong — Laos
+L.circleMarker([19.8, 102.1], {
+  color: "#32CD32",
+  radius: 8
+}).addTo(map).bindPopup("<b>Pahawh Hmong</b><br>Origin: Laos");
+
+// 4. Nyiakeng Puachue Hmong — Laos
+L.circleMarker([19.2, 102.5], {
+  color: "#FFD700",
+  radius: 8
+}).addTo(map).bindPopup("<b>Nyiakeng Puachue Hmong</b><br>Origin: Laos");
+
+// 5. Han (Traditional) + Latin (alias) — Taiwan
+L.circleMarker([23.8, 121.0], {
+  color: "#8A2BE2",
+  radius: 8
+}).addTo(map).bindPopup("<b>Han (Traditional) + Latin</b><br>Origin: Taiwan (alias set)");
+
+// 6. Japanese syllabaries (Hiragana + Katakana) — Japan
+L.circleMarker([35.5, 139.5], {
+  color: "#DC143C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Japanese syllabaries</b><br>Origin: Japan");
+
+// 7. Old Hungarian (Hungarian Runic) — Hungary
+L.circleMarker([47.2, 19.0], {
+  color: "#FF8C00",
+  radius: 8
+}).addTo(map).bindPopup("<b>Old Hungarian</b><br>Origin: Hungary");
+
+// 8. Indus (Harappan) — Indus Valley (Pakistan/India)
+L.circleMarker([28.0, 70.0], {
+  color: "#20B2AA",
+  radius: 8
+}).addTo(map).bindPopup("<b>Indus (Harappan)</b><br>Origin: Indus Valley");
+
+// 9. Old Italic (Etruscan, Oscan) — Italy
+L.circleMarker([42.9, 12.5], {
+  color: "#4169E1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Old Italic</b><br>Origin: Italy");
+
+// 10. Jamo (subset of Hangul) — Korea
+L.circleMarker([37.6, 127.0], {
+  color: "#FF1493",
+  radius: 8
+}).addTo(map).bindPopup("<b>Jamo</b><br>Origin: Korea");
+
+// 11. Javanese — Java, Indonesia
+L.circleMarker([-7.6, 110.4], {
+  color: "#00CED1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Javanese</b><br>Origin: Java, Indonesia");
+
+// 12. Japanese (Han + Hiragana + Katakana) — Japan
+L.circleMarker([35.6, 139.4], {
+  color: "#7B68EE",
+  radius: 8
+}).addTo(map).bindPopup("<b>Japanese</b><br>Origin: Japan");
+
+// 13. Jurchen — Northeast China / Manchuria
+L.circleMarker([47.0, 128.0], {
+  color: "#3CB371",
+  radius: 8
+}).addTo(map).bindPopup("<b>Jurchen</b><br>Origin: Manchuria");
+
+// 14. Kayah Li — Myanmar
+L.circleMarker([19.0, 97.5], {
+  color: "#CD5C5C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Kayah Li</b><br>Origin: Myanmar");
+
+// 15. Katakana — Japan
+L.circleMarker([35.7, 139.2], {
+  color: "#2E8B57",
+  radius: 8
+}).addTo(map).bindPopup("<b>Katakana</b><br>Origin: Japan");
+
+// 16. Kawi — Java & Bali, Indonesia
+L.circleMarker([-7.0, 111.0], {
+  color: "#A0522D",
+  radius: 8
+}).addTo(map).bindPopup("<b>Kawi</b><br>Origin: Java/Bali");
+
+// 17. Kharoshthi — Gandhara (Pakistan)
+L.circleMarker([34.0, 71.6], {
+  color: "#6A5ACD",
+  radius: 8
+}).addTo(map).bindPopup("<b>Kharoshthi</b><br>Origin: Gandhara (Pakistan)");
+
+// 18. Khmer — Cambodia
+L.circleMarker([12.5, 104.9], {
+  color: "#B22222",
+  radius: 8
+}).addTo(map).bindPopup("<b>Khmer</b><br>Origin: Cambodia");
+
+// 19. Khojki — Sindh (Pakistan)
+L.circleMarker([26.0, 68.0], {
+  color: "#8B4513",
+  radius: 8
+}).addTo(map).bindPopup("<b>Khojki</b><br>Origin: Sindh (Pakistan)");
+
+// 20. Khitan Large Script — Mongolia / Northern China
+L.circleMarker([45.0, 119.0], {
+  color: "#008080",
+  radius: 8
+}).addTo(map).bindPopup("<b>Khitan Large Script</b><br>Origin: Northern China");
+
+// 21. Khitan Small Script — Mongolia / Northern China
+L.circleMarker([45.2, 118.5], {
+  color: "#FF4500",
+  radius: 8
+}).addTo(map).bindPopup("<b>Khitan Small Script</b><br>Origin: Northern China");
+
+// 22. Kannada — Karnataka, India
+L.circleMarker([12.9, 77.6], {
+  color: "#1E90FF",
+  radius: 8
+}).addTo(map).bindPopup("<b>Kannada</b><br>Origin: Karnataka, India");
+
+// 23. Korean (Hangul + Han) — Korea
+L.circleMarker([37.4, 127.1], {
+  color: "#32CD99",
+  radius: 8
+}).addTo(map).bindPopup("<b>Korean</b><br>Origin: Korea");
+
+// 24. Kpelle — Liberia
+L.circleMarker([7.0, -9.5], {
+  color: "#DA70D6",
+  radius: 8
+}).addTo(map).bindPopup("<b>Kpelle</b><br>Origin: Liberia");
+
+// 25. Kirat Rai — Nepal
+L.circleMarker([27.3, 86.0], {
+  color: "#B0C4DE",
+  radius: 8
+}).addTo(map).bindPopup("<b>Kirat Rai</b><br>Origin: Nepal");
+
+// 26. Kaithi — Bihar, India
+L.circleMarker([25.6, 85.2], {
+  color: "#9ACD32",
+  radius: 8
+}).addTo(map).bindPopup("<b>Kaithi</b><br>Origin: Bihar, India");
+
+// 27. Tai Tham (Lanna) — Northern Thailand / Laos
+L.circleMarker([18.8, 99.0], {
+  color: "#FF6347",
+  radius: 8
+}).addTo(map).bindPopup("<b>Tai Tham (Lanna)</b><br>Origin: Northern Thailand/Laos");
+
+// 28. Lao — Laos
+L.circleMarker([18.2, 102.6], {
+  color: "#4682B4",
+  radius: 8
+}).addTo(map).bindPopup("<b>Lao</b><br>Origin: Laos");
+
+// 29. Latin (Fraktur) — Germany
+L.circleMarker([52.5, 13.4], {
+  color: "#32CD32",
+  radius: 8
+}).addTo(map).bindPopup("<b>Latin (Fraktur)</b><br>Origin: Germany");
+
+// 30. Latin (Gaelic) — Ireland
+L.circleMarker([53.3, -7.5], {
+  color: "#FFD700",
+  radius: 8
+}).addTo(map).bindPopup("<b>Latin (Gaelic)</b><br>Origin: Ireland");
+
+// 31. Latin — Italy
+L.circleMarker([41.9, 12.5], {
+  color: "#8A2BE2",
+  radius: 8
+}).addTo(map).bindPopup("<b>Latin</b><br>Origin: Italy");
+
+// 32. Leke — Burundi / DR Congo
+L.circleMarker([-3.4, 29.3], {
+  color: "#DC143C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Leke</b><br>Origin: Burundi/DR Congo");
+
+// 33. Lepcha — Sikkim, India
+L.circleMarker([27.3, 88.6], {
+  color: "#FF8C00",
+  radius: 8
+}).addTo(map).bindPopup("<b>Lepcha</b><br>Origin: Sikkim, India");
+
+// 34. Limbu — Nepal
+L.circleMarker([27.1, 87.8], {
+  color: "#20B2AA",
+  radius: 8
+}).addTo(map).bindPopup("<b>Limbu</b><br>Origin: Nepal");
+
+// 35. Linear A — Crete
+L.circleMarker([35.2, 24.9], {
+  color: "#4169E1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Linear A</b><br>Origin: Crete");
+
+// 36. Linear B — Crete / Greece
+L.circleMarker([35.3, 25.0], {
+  color: "#FF1493",
+  radius: 8
+}).addTo(map).bindPopup("<b>Linear B</b><br>Origin: Crete/Greece");
+
+// 37. Lisu (Fraser) — China / Myanmar
+L.circleMarker([26.0, 98.0], {
+  color: "#00CED1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Lisu</b><br>Origin: China/Myanmar");
+
+// 38. Loma — Liberia / Guinea
+L.circleMarker([7.7, -9.0], {
+  color: "#7B68EE",
+  radius: 8
+}).addTo(map).bindPopup("<b>Loma</b><br>Origin: Liberia/Guinea");
+
+// 39. Lycian — Anatolia (Turkey)
+L.circleMarker([36.3, 29.3], {
+  color: "#3CB371",
+  radius: 8
+}).addTo(map).bindPopup("<b>Lycian</b><br>Origin: Anatolia (Turkey)");
+
+// 40. Lydian — Anatolia (Turkey)
+L.circleMarker([38.6, 28.0], {
+  color: "#CD5C5C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Lydian</b><br>Origin: Anatolia (Turkey)");
+
+// 41. Mahajani — North India (Punjab/Rajasthan)
+L.circleMarker([29.0, 75.0], {
+  color: "#A0522D",
+  radius: 8
+}).addTo(map).bindPopup("<b>Mahajani</b><br>Origin: North India");
+
+// 42. Makasar — South Sulawesi, Indonesia
+L.circleMarker([-5.1, 119.4], {
+  color: "#6A5ACD",
+  radius: 8
+}).addTo(map).bindPopup("<b>Makasar</b><br>Origin: South Sulawesi, Indonesia");
+
+// 43. Mandaic — Southern Iraq / Iran
+L.circleMarker([31.0, 47.0], {
+  color: "#B22222",
+  radius: 8
+}).addTo(map).bindPopup("<b>Mandaic</b><br>Origin: Southern Iraq / Iran");
+
+// 44. Manichaean — Central Asia / Persia
+L.circleMarker([36.0, 58.0], {
+  color: "#8B4513",
+  radius: 8
+}).addTo(map).bindPopup("<b>Manichaean</b><br>Origin: Central Asia / Persia");
+
+// 45. Marchen — Tibet
+L.circleMarker([31.5, 88.9], {
+  color: "#008080",
+  radius: 8
+}).addTo(map).bindPopup("<b>Marchen</b><br>Origin: Tibet");
+
+// 46. Mayan hieroglyphs — Mesoamerica
+L.circleMarker([17.0, -90.0], {
+  color: "#FF4500",
+  radius: 8
+}).addTo(map).bindPopup("<b>Mayan hieroglyphs</b><br>Origin: Mesoamerica");
+
+// 47. Medefaidrin — Nigeria
+L.circleMarker([5.1, 7.9], {
+  color: "#1E90FF",
+  radius: 8
+}).addTo(map).bindPopup("<b>Medefaidrin</b><br>Origin: Nigeria");
+
+// 48. Mende Kikakui — Sierra Leone
+L.circleMarker([7.9, -11.6], {
+  color: "#32CD99",
+  radius: 8
+}).addTo(map).bindPopup("<b>Mende Kikakui</b><br>Origin: Sierra Leone");
+
+// 49. Meroitic Cursive — Sudan
+L.circleMarker([16.0, 33.0], {
+  color: "#DA70D6",
+  radius: 8
+}).addTo(map).bindPopup("<b>Meroitic Cursive</b><br>Origin: Sudan");
+
+// 50. Meroitic Hieroglyphs — Sudan
+L.circleMarker([16.2, 32.9], {
+  color: "#B0C4DE",
+  radius: 8
+}).addTo(map).bindPopup("<b>Meroitic Hieroglyphs</b><br>Origin: Sudan");
+
+// 51. Malayalam — Kerala, India
+L.circleMarker([10.0, 76.5], {
+  color: "#9ACD32",
+  radius: 8
+}).addTo(map).bindPopup("<b>Malayalam</b><br>Origin: Kerala, India");
+
+// 52. Modi — Maharashtra, India
+L.circleMarker([19.7, 75.9], {
+  color: "#FF6347",
+  radius: 8
+}).addTo(map).bindPopup("<b>Modi</b><br>Origin: Maharashtra, India");
+
+// 53. Mongolian — Mongolia / Northern China
+L.circleMarker([47.5, 106.9], {
+  color: "#4682B4",
+  radius: 8
+}).addTo(map).bindPopup("<b>Mongolian</b><br>Origin: Mongolia");
+
+// 54. Moon — England
+L.circleMarker([51.3, -0.3], {
+  color: "#32CD32",
+  radius: 8
+}).addTo(map).bindPopup("<b>Moon Script</b><br>Origin: England");
+
+// 55. Mro — Bangladesh / Myanmar
+L.circleMarker([21.1, 92.3], {
+  color: "#FFD700",
+  radius: 8
+}).addTo(map).bindPopup("<b>Mro</b><br>Origin: Bangladesh/Myanmar");
+
+// 56. Meitei Mayek — Manipur, India
+L.circleMarker([24.8, 93.9], {
+  color: "#8A2BE2",
+  radius: 8
+}).addTo(map).bindPopup("<b>Meitei Mayek</b><br>Origin: Manipur, India");
+
+// 57. Multani — Punjab region (Pakistan/India)
+L.circleMarker([29.5, 72.0], {
+  color: "#DC143C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Multani</b><br>Origin: Punjab region");
+
+// 58. Myanmar (Burmese) — Myanmar
+L.circleMarker([17.0, 96.0], {
+  color: "#FF8C00",
+  radius: 8
+}).addTo(map).bindPopup("<b>Myanmar</b><br>Origin: Myanmar");
+
+// 59. Nag Mundari — Jharkhand, India
+L.circleMarker([23.6, 85.3], {
+  color: "#20B2AA",
+  radius: 8
+}).addTo(map).bindPopup("<b>Nag Mundari</b><br>Origin: Jharkhand, India");
+
+// 60. Nandinagari — Karnataka, India
+L.circleMarker([14.0, 75.0], {
+  color: "#4169E1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Nandinagari</b><br>Origin: Karnataka, India");
+
+// 61. Old North Arabian — Arabian Peninsula
+L.circleMarker([26.0, 39.0], {
+  color: "#FF1493",
+  radius: 8
+}).addTo(map).bindPopup("<b>Old North Arabian</b><br>Origin: Arabian Peninsula");
+
+// 62. Nabataean — Jordan / NW Arabia
+L.circleMarker([30.3, 35.4], {
+  color: "#00CED1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Nabataean</b><br>Origin: Jordan/Northwest Arabia");
+
+// 63. Newa (Newar) — Kathmandu Valley, Nepal
+L.circleMarker([27.7, 85.3], {
+  color: "#7B68EE",
+  radius: 8
+}).addTo(map).bindPopup("<b>Newa</b><br>Origin: Nepal");
+
+// 64. Naxi Dongba — Yunnan, China
+L.circleMarker([27.8, 100.3], {
+  color: "#3CB371",
+  radius: 8
+}).addTo(map).bindPopup("<b>Naxi Dongba</b><br>Origin: Yunnan, China");
+
+// 65. Naxi Geba — Yunnan, China
+L.circleMarker([27.9, 100.4], {
+  color: "#CD5C5C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Naxi Geba</b><br>Origin: Yunnan, China");
+
+// 66. N’Ko — Guinea / Mali
+L.circleMarker([10.5, -8.0], {
+  color: "#2E8B57",
+  radius: 8
+}).addTo(map).bindPopup("<b>N'Ko</b><br>Origin: Guinea/Mali");
+
+// 67. Nüshu — Hunan, China
+L.circleMarker([26.2, 110.0], {
+  color: "#A0522D",
+  radius: 8
+}).addTo(map).bindPopup("<b>Nüshu</b><br>Origin: Hunan, China");
+
+// 68. Ogham — Ireland
+L.circleMarker([53.3, -8.0], {
+  color: "#6A5ACD",
+  radius: 8
+}).addTo(map).bindPopup("<b>Ogham</b><br>Origin: Ireland");
+
+// 69. Ol Chiki — Jharkhand, India
+L.circleMarker([22.8, 86.2], {
+  color: "#B22222",
+  radius: 8
+}).addTo(map).bindPopup("<b>Ol Chiki</b><br>Origin: Jharkhand, India");
+
+// 70. Ol Onal — Assam, India
+L.circleMarker([26.5, 92.0], {
+  color: "#8B4513",
+  radius: 8
+}).addTo(map).bindPopup("<b>Ol Onal</b><br>Origin: Assam, India");
+
+// 71. Old Turkic (Orkhon) — Mongolia
+L.circleMarker([48.0, 102.0], {
+  color: "#008080",
+  radius: 8
+}).addTo(map).bindPopup("<b>Old Turkic</b><br>Origin: Mongolia");
+
+// 72. Oriya (Odia) — Odisha, India
+L.circleMarker([20.3, 85.8], {
+  color: "#FF4500",
+  radius: 8
+}).addTo(map).bindPopup("<b>Oriya (Odia)</b><br>Origin: Odisha, India");
+
+// 73. Osage — Oklahoma, USA
+L.circleMarker([35.9, -96.3], {
+  color: "#1E90FF",
+  radius: 8
+}).addTo(map).bindPopup("<b>Osage</b><br>Origin: Oklahoma, USA");
+
+// 74. Osmanya — Somalia
+L.circleMarker([2.0, 45.3], {
+  color: "#32CD99",
+  radius: 8
+}).addTo(map).bindPopup("<b>Osmanya</b><br>Origin: Somalia");
+
+// 75. Old Uyghur — Xinjiang, China
+L.circleMarker([40.9, 82.3], {
+  color: "#DA70D6",
+  radius: 8
+}).addTo(map).bindPopup("<b>Old Uyghur</b><br>Origin: Xinjiang, China");
+
+// 76. Palmyrene — Syria
+L.circleMarker([34.6, 38.3], {
+  color: "#B0C4DE",
+  radius: 8
+}).addTo(map).bindPopup("<b>Palmyrene</b><br>Origin: Syria");
+
+// 77. Pau Cin Hau — Myanmar (Chin State)
+L.circleMarker([22.9, 93.6], {
+  color: "#9ACD32",
+  radius: 8
+}).addTo(map).bindPopup("<b>Pau Cin Hau</b><br>Origin: Myanmar");
+
+// 78. Proto-Cuneiform — Mesopotamia (Iraq)
+L.circleMarker([32.5, 45.0], {
+  color: "#FF6347",
+  radius: 8
+}).addTo(map).bindPopup("<b>Proto-Cuneiform</b><br>Origin: Mesopotamia");
+
+// 79. Proto-Elamite — Iran
+L.circleMarker([31.0, 50.0], {
+  color: "#4682B4",
+  radius: 8
+}).addTo(map).bindPopup("<b>Proto-Elamite</b><br>Origin: Iran");
+
+// 80. Old Permic — Komi region, Russia
+L.circleMarker([60.0, 54.0], {
+  color: "#32CD32",
+  radius: 8
+}).addTo(map).bindPopup("<b>Old Permic</b><br>Origin: Komi, Russia");
+
+// 81. Phags-pa — Yuan Dynasty China / Mongolia
+L.circleMarker([41.0, 113.0], {
+  color: "#FFD700",
+  radius: 8
+}).addTo(map).bindPopup("<b>Phags-pa</b><br>Origin: China/Mongolia");
+
+// 82. Inscriptional Pahlavi — Iran
+L.circleMarker([32.0, 52.0], {
+  color: "#8A2BE2",
+  radius: 8
+}).addTo(map).bindPopup("<b>Inscriptional Pahlavi</b><br>Origin: Iran");
+
+// 83. Psalter Pahlavi — Iran
+L.circleMarker([31.5, 51.0], {
+  color: "#DC143C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Psalter Pahlavi</b><br>Origin: Iran");
+
+// 84. Book Pahlavi — Iran
+L.circleMarker([32.5, 51.5], {
+  color: "#FF8C00",
+  radius: 8
+}).addTo(map).bindPopup("<b>Book Pahlavi</b><br>Origin: Iran");
+
+// 85. Phoenician — Levant (Lebanon area)
+L.circleMarker([34.0, 35.7], {
+  color: "#20B2AA",
+  radius: 8
+}).addTo(map).bindPopup("<b>Phoenician</b><br>Origin: Levant");
+
+// 86. Miao (Pollard) — China (Guizhou region)
+L.circleMarker([26.5, 106.6], {
+  color: "#4169E1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Miao (Pollard)</b><br>Origin: Guizhou, China");
+
+// 87. Klingon (KLI pIqaD) — Constructed (USA)
+L.circleMarker([37.8, -122.4], {
+  color: "#FF1493",
+  radius: 8
+}).addTo(map).bindPopup("<b>Klingon (pIqaD)</b><br>Origin: Constructed (USA)");
+
+// 88. Inscriptional Parthian — Iran
+L.circleMarker([33.0, 54.0], {
+  color: "#00CED1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Inscriptional Parthian</b><br>Origin: Iran");
+
+// 89. Proto-Sinaitic — Sinai Peninsula / Levant
+L.circleMarker([29.5, 34.0], {
+  color: "#7B68EE",
+  radius: 8
+}).addTo(map).bindPopup("<b>Proto-Sinaitic</b><br>Origin: Sinai Peninsula");
+
+// 90. Reserved private-use (start) — No geographic origin
+L.circleMarker([0, 0], {
+  color: "#3CB371",
+  radius: 8
+}).addTo(map).bindPopup("<b>Private Use (Start)</b><br>No geographic origin");
+
+// 91. Reserved private-use (end) — No geographic origin
+L.circleMarker([0.5, 0.5], {
+  color: "#CD5C5C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Private Use (End)</b><br>No geographic origin");
+
+// 92. Ranjana — Nepal / Tibet
+L.circleMarker([28.1, 85.4], {
+  color: "#2E8B57",
+  radius: 8
+}).addTo(map).bindPopup("<b>Ranjana</b><br>Origin: Nepal/Tibet");
+
+// 93. Rejang — Sumatra, Indonesia
+L.circleMarker([-3.5, 102.3], {
+  color: "#A0522D",
+  radius: 8
+}).addTo(map).bindPopup("<b>Rejang</b><br>Origin: Sumatra, Indonesia");
+
+// 94. Hanifi Rohingya — Myanmar / Bangladesh
+L.circleMarker([21.4, 92.3], {
+  color: "#6A5ACD",
+  radius: 8
+}).addTo(map).bindPopup("<b>Hanifi Rohingya</b><br>Origin: Myanmar/Bangladesh");
+
+// 95. Rongorongo — Rapa Nui (Easter Island)
+L.circleMarker([-27.1, -109.4], {
+  color: "#B22222",
+  radius: 8
+}).addTo(map).bindPopup("<b>Rongorongo</b><br>Origin: Rapa Nui");
+
+// 96. Runic — Scandinavia
+L.circleMarker([60.0, 10.0], {
+  color: "#8B4513",
+  radius: 8
+}).addTo(map).bindPopup("<b>Runic</b><br>Origin: Scandinavia");
+
+// 97. Samaritan — Israel / Levant
+L.circleMarker([32.2, 35.3], {
+  color: "#008080",
+  radius: 8
+}).addTo(map).bindPopup("<b>Samaritan</b><br>Origin: Levant");
+
+// 98. Sarati — Constructed (J.R.R. Tolkien) — England
+L.circleMarker([51.5, -0.1], {
+  color: "#FF4500",
+  radius: 8
+}).addTo(map).bindPopup("<b>Sarati</b><br>Origin: Constructed (England)");
+
+// 99. Old South Arabian — Yemen
+L.circleMarker([15.5, 45.0], {
+  color: "#1E90FF",
+  radius: 8
+}).addTo(map).bindPopup("<b>Old South Arabian</b><br>Origin: Yemen");
+
+// 100. Saurashtra — Tamil Nadu, India
+L.circleMarker([9.9, 78.1], {
+  color: "#32CD99",
+  radius: 8
+}).addTo(map).bindPopup("<b>Saurashtra</b><br>Origin: Tamil Nadu, India");
+
+// 101. Small Seal Script — China (Qin dynasty)
+L.circleMarker([34.4, 109.0], {
+  color: "#DA70D6",
+  radius: 8
+}).addTo(map).bindPopup("<b>Small Seal Script</b><br>Origin: China");
+
+// 102. SignWriting — USA
+L.circleMarker([33.7, -117.9], {
+  color: "#B0C4DE",
+  radius: 8
+}).addTo(map).bindPopup("<b>SignWriting</b><br>Origin: USA");
+
+// 103. Shavian — United Kingdom
+L.circleMarker([52.0, -1.5], {
+  color: "#9ACD32",
+  radius: 8
+}).addTo(map).bindPopup("<b>Shavian</b><br>Origin: United Kingdom");
+
+// 104. Sharada — Kashmir region
+L.circleMarker([34.1, 74.8], {
+  color: "#FF6347",
+  radius: 8
+}).addTo(map).bindPopup("<b>Sharada</b><br>Origin: Kashmir");
+
+// 105. Shuishu — Guizhou, China
+L.circleMarker([26.0, 108.0], {
+  color: "#4682B4",
+  radius: 8
+}).addTo(map).bindPopup("<b>Shuishu</b><br>Origin: Guizhou, China");
+
+// 106. Siddham — India (later Japan)
+L.circleMarker([25.0, 82.0], {
+  color: "#32CD32",
+  radius: 8
+}).addTo(map).bindPopup("<b>Siddham</b><br>Origin: India");
+
+// 107. Sidetic — Southern Turkey
+L.circleMarker([36.8, 31.4], {
+  color: "#FFD700",
+  radius: 8
+}).addTo(map).bindPopup("<b>Sidetic</b><br>Origin: Southern Turkey");
+
+// 108. Khudawadi — Sindh region (Pakistan)
+L.circleMarker([26.8, 68.3], {
+  color: "#8A2BE2",
+  radius: 8
+}).addTo(map).bindPopup("<b>Khudawadi</b><br>Origin: Sindh, Pakistan");
+
+// 109. Sinhala — Sri Lanka
+L.circleMarker([7.8, 80.6], {
+  color: "#DC143C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Sinhala</b><br>Origin: Sri Lanka");
+
+// 110. Sogdian — Central Asia (Uzbekistan/Tajikistan)
+L.circleMarker([39.9, 68.8], {
+  color: "#FF8C00",
+  radius: 8
+}).addTo(map).bindPopup("<b>Sogdian</b><br>Origin: Central Asia");
+
+// 111. Old Sogdian — Central Asia
+L.circleMarker([40.1, 69.0], {
+  color: "#20B2AA",
+  radius: 8
+}).addTo(map).bindPopup("<b>Old Sogdian</b><br>Origin: Central Asia");
+
+// 112. Sora Sompeng — Odisha, India
+L.circleMarker([19.2, 83.2], {
+  color: "#4169E1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Sora Sompeng</b><br>Origin: Odisha, India");
+
+// 113. Soyombo — Mongolia
+L.circleMarker([47.0, 106.8], {
+  color: "#FF1493",
+  radius: 8
+}).addTo(map).bindPopup("<b>Soyombo</b><br>Origin: Mongolia");
+
+// 114. Sundanese — West Java, Indonesia
+L.circleMarker([-6.9, 107.6], {
+  color: "#00CED1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Sundanese</b><br>Origin: West Java");
+
+// 115. Sunuwar — Eastern Nepal
+L.circleMarker([27.2, 86.0], {
+  color: "#7B68EE",
+  radius: 8
+}).addTo(map).bindPopup("<b>Sunuwar</b><br>Origin: Eastern Nepal");
+
+// 116. Syloti Nagri — Sylhet region (Bangladesh)
+L.circleMarker([24.9, 91.9], {
+  color: "#3CB371",
+  radius: 8
+}).addTo(map).bindPopup("<b>Syloti Nagri</b><br>Origin: Sylhet, Bangladesh");
+
+// 117. Syriac — Mesopotamia
+L.circleMarker([35.0, 42.0], {
+  color: "#CD5C5C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Syriac</b><br>Origin: Mesopotamia");
+
+// 118. Syriac (Estrangelo) — Syria/Iraq
+L.circleMarker([34.8, 41.9], {
+  color: "#2E8B57",
+  radius: 8
+}).addTo(map).bindPopup("<b>Syriac (Estrangelo)</b><br>Origin: Syria/Iraq");
+
+// 119. Syriac (Western) — Lebanon/Syria
+L.circleMarker([33.9, 36.0], {
+  color: "#A0522D",
+  radius: 8
+}).addTo(map).bindPopup("<b>Syriac (Western)</b><br>Origin: Lebanon/Syria");
+
+// 120. Syriac (Eastern) — Iraq/Iran
+L.circleMarker([34.5, 45.5], {
+  color: "#6A5ACD",
+  radius: 8
+}).addTo(map).bindPopup("<b>Syriac (Eastern)</b><br>Origin: Iraq/Iran");
+
+// 121. Tagbanwa — Philippines (Palawan)
+L.circleMarker([9.8, 118.7], {
+  color: "#B22222",
+  radius: 8
+}).addTo(map).bindPopup("<b>Tagbanwa</b><br>Origin: Palawan, Philippines");
+
+// 122. Takri — Himachal Pradesh / Jammu region (India)
+L.circleMarker([32.6, 76.0], {
+  color: "#8B4513",
+  radius: 8
+}).addTo(map).bindPopup("<b>Takri</b><br>Origin: Himachal/Jammu, India");
+
+// 123. Tai Le — Yunnan, China
+L.circleMarker([24.3, 98.0], {
+  color: "#008080",
+  radius: 8
+}).addTo(map).bindPopup("<b>Tai Le</b><br>Origin: Yunnan, China");
+
+// 124. New Tai Lue — Yunnan, China / Laos
+L.circleMarker([21.9, 100.8], {
+  color: "#FF4500",
+  radius: 8
+}).addTo(map).bindPopup("<b>New Tai Lue</b><br>Origin: Yunnan/Laos");
+
+// 125. Tamil — Tamil Nadu, India / Sri Lanka
+L.circleMarker([10.5, 78.8], {
+  color: "#1E90FF",
+  radius: 8
+}).addTo(map).bindPopup("<b>Tamil</b><br>Origin: Tamil Nadu, India");
+
+// 126. Tangut — Northwest China (Ningxia/Gansu)
+L.circleMarker([37.9, 106.2], {
+  color: "#32CD99",
+  radius: 8
+}).addTo(map).bindPopup("<b>Tangut</b><br>Origin: Ningxia, China");
+
+// 127. Tai Viet — Northern Vietnam
+L.circleMarker([21.5, 103.0], {
+  color: "#DA70D6",
+  radius: 8
+}).addTo(map).bindPopup("<b>Tai Viet</b><br>Origin: Northern Vietnam");
+
+// 128. Tai Yo — Vietnam / Laos
+L.circleMarker([20.6, 104.0], {
+  color: "#B0C4DE",
+  radius: 8
+}).addTo(map).bindPopup("<b>Tai Yo</b><br>Origin: Vietnam/Laos");
+
+// 129. Telugu — Andhra Pradesh / Telangana, India
+L.circleMarker([16.5, 79.5], {
+  color: "#9ACD32",
+  radius: 8
+}).addTo(map).bindPopup("<b>Telugu</b><br>Origin: Andhra/Telangana, India");
+
+// 1. Tengwar — Constructed (J.R.R. Tolkien), England
+L.circleMarker([51.6, -0.1], {
+  color: "#FF6347",
+  radius: 8
+}).addTo(map).bindPopup("<b>Tengwar</b><br>Origin: Constructed (England)");
+
+// 2. Tifinagh (Berber) — North Africa (Morocco/Algeria)
+L.circleMarker([25.0, -3.0], {
+  color: "#4682B4",
+  radius: 8
+}).addTo(map).bindPopup("<b>Tifinagh</b><br>Origin: North Africa");
+
+// 3. Tagalog (Baybayin) — Philippines (Luzon)
+L.circleMarker([15.2, 121.0], {
+  color: "#32CD32",
+  radius: 8
+}).addTo(map).bindPopup("<b>Baybayin (Tagalog)</b><br>Origin: Philippines");
+
+// 4. Thaana — Maldives
+L.circleMarker([3.2, 73.2], {
+  color: "#FFD700",
+  radius: 8
+}).addTo(map).bindPopup("<b>Thaana</b><br>Origin: Maldives");
+
+// 5. Thai — Thailand
+L.circleMarker([15.0, 100.0], {
+  color: "#8A2BE2",
+  radius: 8
+}).addTo(map).bindPopup("<b>Thai</b><br>Origin: Thailand");
+
+// 6. Tibetan — Tibet Plateau
+L.circleMarker([30.0, 89.0], {
+  color: "#DC143C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Tibetan</b><br>Origin: Tibet");
+
+// 7. Tirhuta — Bihar, India
+L.circleMarker([26.1, 85.3], {
+  color: "#FF8C00",
+  radius: 8
+}).addTo(map).bindPopup("<b>Tirhuta</b><br>Origin: Bihar, India");
+
+// 8. Tangsa — Arunachal Pradesh, India
+L.circleMarker([27.4, 96.4], {
+  color: "#20B2AA",
+  radius: 8
+}).addTo(map).bindPopup("<b>Tangsa</b><br>Origin: Arunachal Pradesh, India");
+
+// 9. Todhri — Albania
+L.circleMarker([41.1, 20.1], {
+  color: "#4169E1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Todhri</b><br>Origin: Albania");
+
+// 10. Tolong Siki — Jharkhand, India
+L.circleMarker([23.5, 85.0], {
+  color: "#FF1493",
+  radius: 8
+}).addTo(map).bindPopup("<b>Tolong Siki</b><br>Origin: Jharkhand, India");
+
+// 11. Toto — West Bengal, India
+L.circleMarker([27.0, 89.3], {
+  color: "#00CED1",
+  radius: 8
+}).addTo(map).bindPopup("<b>Toto</b><br>Origin: West Bengal, India");
+
+// 12. Tulu-Tigalari — Karnataka / Kerala, India
+L.circleMarker([13.0, 75.0], {
+  color: "#7B68EE",
+  radius: 8
+}).addTo(map).bindPopup("<b>Tulu-Tigalari</b><br>Origin: Karnataka/Kerala, India");
+
+// 13. Ugaritic — Syria (Ugarit)
+L.circleMarker([35.6, 35.8], {
+  color: "#3CB371",
+  radius: 8
+}).addTo(map).bindPopup("<b>Ugaritic</b><br>Origin: Syria");
+
+// 14. Vai — Liberia
+L.circleMarker([6.8, -10.9], {
+  color: "#CD5C5C",
+  radius: 8
+}).addTo(map).bindPopup("<b>Vai</b><br>Origin: Liberia");
+
+// 15. Visible Speech — United Kingdom
+L.circleMarker([55.9, -3.2], {
+  color: "#2E8B57",
+  radius: 8
+}).addTo(map).bindPopup("<b>Visible Speech</b><br>Origin: United Kingdom");
+
+// 16. Vithkuqi — Albania
+L.circleMarker([40.9, 20.2], {
+  color: "#A0522D",
+  radius: 8
+}).addTo(map).bindPopup("<b>Vithkuqi</b><br>Origin: Albania");
+
+// 17. Warang Citi — Jharkhand, India
+L.circleMarker([23.7, 85.6], {
+  color: "#6A5ACD",
+  radius: 8
+}).addTo(map).bindPopup("<b>Warang Citi</b><br>Origin: Jharkhand, India");
+
+// 18. Wancho — Arunachal Pradesh, India
+L.circleMarker([27.0, 95.6], {
+  color: "#B22222",
+  radius: 8
+}).addTo(map).bindPopup("<b>Wancho</b><br>Origin: Arunachal Pradesh, India");
+
+// 19. Woleai — Micronesia
+L.circleMarker([7.4, 143.9], {
+  color: "#8B4513",
+  radius: 8
+}).addTo(map).bindPopup("<b>Woleai</b><br>Origin: Micronesia");
+
+// 20. Old Persian — Iran
+L.circleMarker([32.8, 51.5], {
+  color: "#008080",
+  radius: 8
+}).addTo(map).bindPopup("<b>Old Persian</b><br>Origin: Iran");
+
+// 21. Cuneiform (Sumero-Akkadian) — Mesopotamia (Iraq)
+L.circleMarker([31.5, 45.0], {
+  color: "#FF4500",
+  radius: 8
+}).addTo(map).bindPopup("<b>Cuneiform</b><br>Origin: Mesopotamia");
+
+// 22. Yezidi — Iraq (Sinjar region)
+L.circleMarker([36.3, 41.7], {
+  color: "#1E90FF",
+  radius: 8
+}).addTo(map).bindPopup("<b>Yezidi</b><br>Origin: Iraq (Sinjar)");
+
+// 23. Yi — Sichuan/Yunnan, China
+L.circleMarker([27.5, 103.4], {
+  color: "#32CD99",
+  radius: 8
+}).addTo(map).bindPopup("<b>Yi</b><br>Origin: Sichuan/Yunnan, China");
+
+// 24. Zanabazar Square — Mongolia
+L.circleMarker([47.7, 106.9], {
+  color: "#DA70D6",
+  radius: 8
+}).addTo(map).bindPopup("<b>Zanabazar Square</b><br>Origin: Mongolia");
+
+
+</script>
+
+</body>
+</html>
